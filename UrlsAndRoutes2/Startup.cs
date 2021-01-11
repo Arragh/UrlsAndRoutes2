@@ -1,12 +1,14 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using UrlsAndRoutes2.Infrastructure;
 
 namespace UrlsAndRoutes2
 {
@@ -15,6 +17,7 @@ namespace UrlsAndRoutes2
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.Configure<RouteOptions>(options => options.ConstraintMap.Add("weekday", typeof(WeekDayConstraint)));
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -30,7 +33,7 @@ namespace UrlsAndRoutes2
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute("NewRoute", "app/do{action}", defaults: new { controller = "Home" });
+                endpoints.MapControllerRoute("NewRoute", "App/{action}/{id?}", defaults: new { controller = "Home"});
                 endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
             });
         }

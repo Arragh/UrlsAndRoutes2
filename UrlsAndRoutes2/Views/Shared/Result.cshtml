@@ -40,7 +40,13 @@
         }
     </table>
 
-    <a asp-action="CustomVariable">Кликни меня!</a>
+    <a asp-action="Index" asp-controller="Home">Кликни меня!</a>
+    <br />
+    <a asp-action="Index" asp-controller="Admin">Кликни меня для админки!</a>
+    <br />
+    <a asp-action="Index" asp-controller="Customer">Кликни меня для кустомер-контроллера</a>
+    <br />
+    <a asp-action="CustomVariable" asp-controller="Home" asp-route-id="Hello">Кликни меня для ХЕЛЛОУ</a>
 
 </body>
 </html>
