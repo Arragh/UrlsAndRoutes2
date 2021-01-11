@@ -30,7 +30,8 @@ namespace UrlsAndRoutes2
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute(null, "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapControllerRoute("NewRoute", "app/do{action}", defaults: new { controller = "Home" });
+                endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }
