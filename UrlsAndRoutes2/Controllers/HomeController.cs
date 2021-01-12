@@ -15,6 +15,7 @@ namespace UrlsAndRoutes2.Controllers
         {
             Result result = new Result { Controller = nameof(HomeController), Action = nameof(CustomVariable) };
             result.Data["id"] = id ?? "<не задано>";
+            result.Data["url"] = Url.Action("CustomVariable", "Home", new { id = "ActionLink2" });
             return View(nameof(Result), result);
         }
     }

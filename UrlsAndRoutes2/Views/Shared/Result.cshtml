@@ -47,6 +47,14 @@
     <a asp-action="Index" asp-controller="Customer">Кликни меня для кустомер-контроллера</a>
     <br />
     <a asp-action="CustomVariable" asp-controller="Home" asp-route-id="Hello">Кликни меня для ХЕЛЛОУ</a>
+    <br />
+    <a asp-action="CustomVariable" asp-controller="Home" asp-route-id="Hello" asp-protocol="https" asp-host="localhost:5001" asp-fragment="MyFragment">Полностью сгенерированный URL</a>
+    <br />
+    <a asp-route="out">Исходящий URL специфической генерации</a>
+    <br />
+    @Html.ActionLink("Ссылка Html.ActionLink", "CustomVariable", "Home", new { id = "ActionLink" })
+    <br />
+    @Url.Action("CustomVariable", "Home", new { id = "ActionLink2" })
 
 </body>
 </html>

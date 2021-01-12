@@ -35,6 +35,7 @@ namespace UrlsAndRoutes2
             {
                 endpoints.MapControllerRoute("NewRoute", "App/{action}/{id?}", defaults: new { controller = "Home"});
                 endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapControllerRoute("out", "outbound/{controller=Home}/{action=Index}/{id?}");
             });
         }
     }
