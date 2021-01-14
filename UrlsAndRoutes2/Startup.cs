@@ -35,10 +35,12 @@ namespace UrlsAndRoutes2
             app.UseRouting();
             app.UseStatusCodePages();
             app.UseStaticFiles();
+            //app.UseMvc(routes => routes.Routes.Add(new LegacyRoute("test/lol", "/lol/test"));
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute("NewRoute", "App/{action}/{id?}", defaults: new { controller = "Home"});
+                endpoints.MapControllerRoute("areas", "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapControllerRoute("NewRoute", "App/{action}/{id?}", defaults: new { controller = "Home" });
                 endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapControllerRoute("out", "outbound/{controller=Home}/{action=Index}/{id?}");
             });
